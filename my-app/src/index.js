@@ -62,8 +62,8 @@ class Input extends React.Component{
         return (
             <div>
                 {rows}
-                <button onClick={() => this.handleClick(true)}><img src="add_circle.svg" width={20}/></button>
-                <button onClick={() => this.handleClick(false)}><img src="remove_circle.svg" width={20}/></button>
+                <button className="add-button" onClick={() => this.handleClick(true)}><img src="add_circle.svg" alt="+"/></button>
+                <button className="remove-button" onClick={() => this.handleClick(false)}><img src="remove_circle.svg" alt="-"/></button>
             </div>
         );
     }

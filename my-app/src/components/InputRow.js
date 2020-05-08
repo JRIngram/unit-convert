@@ -1,5 +1,6 @@
 import React from 'react';
 import { convertMass, convertVolume } from 'ts-unit-convert';
+import DisplayUnit from '../components/DisplayUnit'
 
 /**
  * Component which handles the input and conversion of inputs to units.
@@ -26,13 +27,12 @@ class InputRow extends React.Component{
             const fromUnit = this.state.fromUnit;
             if(fromUnit === 'g' || fromUnit === 'kg' || fromUnit === 'mg' || fromUnit === 'lb' || fromUnit === 'st'){
                 //Convert to mass if mass unit
+                console.log(this.state.fromValue, this.state.fromUnit, this.state.toUnit);
                 convertedValue = convertMass(this.state.fromValue, this.state.fromUnit, this.state.toUnit);
-                this.setState({toValue: convertedValue});
             }
             if(fromUnit === 'm3' || fromUnit === 'l' || fromUnit === 'ml' || fromUnit === 'pt (imp)' || fromUnit === 'cup (mt)'){
                 //Convert to volume if volume unit
                 convertedValue = convertVolume(this.state.fromValue, this.state.fromUnit, this.state.toUnit);
-                this.setState({toValue: convertedValue});
             }
         }catch(Error){
             // If using incompatible units: convert to same type of unit
@@ -46,7 +46,8 @@ class InputRow extends React.Component{
                 this.setState({toUnit: 'l'});
             }
         }
-        console.log(`${this.state.fromValue} has been converted to ${this.state.fromValue}`)
+        console.log("CONVERTED VALUE: " + convertedValue);
+        this.setState({toValue: convertedValue}, () => {console.log(`${this.state.fromValue} has been converted to ${this.state.toValue}`)});
     }
 
     /**
@@ -54,9 +55,7 @@ class InputRow extends React.Component{
      * @param {*} event 
      */
     fromValueChange(event){
-        this.setState({fromValue: event.target.value});
-        console.log(`fromUnit HAS CHANGED ${this.state.fromValue}`);
-        this.convertUnit();
+        this.setState({fromValue: event.target.value}, () => this.convertUnit());
     }
 
     /**
@@ -64,9 +63,7 @@ class InputRow extends React.Component{
      * @param {*} event 
      */
     fromUnitChange(event){
-        this.setState({fromUnit: event.target.value});
-        console.log(`fromUnit HAS CHANGED ${this.state.fromUnit}`);
-        this.convertUnit();
+        this.setState({fromUnit: event.target.value}, () => this.convertUnit());
     }
 
     /**
@@ -74,16 +71,13 @@ class InputRow extends React.Component{
      * @param {*} event 
      */
     toUnitChange(event){
-        console.log(`toUnit HAS CHANGED ${this.state.toUnit}`); 
-        this.setState({toUnit: event.target.value});
-        this.convertUnit();
+        this.setState({toUnit: event.target.value}, () => this.convertUnit());
     }
 
     render() {
         return (
             <div>
                 <input type="text" value={this.state.fromValue} onChange={this.fromValueChange}/>
-                
                 <select id="from" value={this.state.fromUnit}  onChange={this.fromUnitChange}>
                     <option>g</option>
                     <option>mg</option>
@@ -97,8 +91,9 @@ class InputRow extends React.Component{
                     <option>cup (mt)</option>
                 </select>
 
-                <input type="text" value={this.state.toValue} readOnly/>
+                <img className="arrow" src="arrow.svg" alt="-->"/>
 
+                <DisplayUnit toValue={this.state.toValue} />
                 <select id="to" value={this.state.toUnit} onChange={this.toUnitChange}>
                     <option>g</option>
                     <option>mg</option>
