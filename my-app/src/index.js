@@ -4,9 +4,6 @@ import './index.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import InputRow from './components/InputRow';
-import { IoMdRemoveCircle } from 'react-icons'
-
-const ADD_IMAGE_PATH = '/home/jamie/Projects/unit-convert/my-app/assets/add/2x/baseline_add_circle_black_18dp.png';
 
 /**
  * Random timer element to understand states.

@@ -26,25 +26,26 @@ class InputRow extends React.Component{
             const fromUnit = this.state.fromUnit;
             if(fromUnit === 'g' || fromUnit === 'kg' || fromUnit === 'mg' || fromUnit === 'lb' || fromUnit === 'st'){
                 //Convert to mass if mass unit
-                convertedValue = convertMass(this.state.fromValue, this.state.fromUnit, this.state.fromUnit);
+                convertedValue = convertMass(this.state.fromValue, this.state.fromUnit, this.state.toUnit);
+                this.setState({toValue: convertedValue});
             }
             if(fromUnit === 'm3' || fromUnit === 'l' || fromUnit === 'ml' || fromUnit === 'pt (imp)' || fromUnit === 'cup (mt)'){
                 //Convert to volume if volume unit
                 convertedValue = convertVolume(this.state.fromValue, this.state.fromUnit, this.state.toUnit);
+                this.setState({toValue: convertedValue});
             }
         }catch(Error){
             // If using incompatible units: convert to same type of unit
             const fromUnit = this.state.fromUnit;
             if(fromUnit === 'g' || fromUnit === 'kg' || fromUnit === 'mg' || fromUnit === 'lb' || fromUnit === 'st'){
                 //Convert to mass if mass unit
-                this.setState({toUnit: 'g'});
+                this.setState({toUnit: 'g'}, this.convertUnit());
             }
             if(fromUnit === 'm3' || fromUnit === 'l' || fromUnit === 'ml' || fromUnit === 'pt (imp)' || fromUnit === 'cup (mt)'){
                 //Convert to volume if volume unit
-                this.setState({toUnit: 'l'});
+                this.setState({toUnit: 'l'}, this.convertUnit());
             }
         }
-        this.setState({toValue: convertedValue});
         console.log(`${this.state.fromValue} has been converted to ${this.state.fromValue}`)
     }
 
@@ -98,7 +99,7 @@ class InputRow extends React.Component{
 
                 <input type="text" value={this.state.toValue} readOnly/>
 
-                <select id="to" onChange={() => {this.toUnitChange() }}>
+                <select id="to" onChange={this.toUnitChange}>
                     <option>g</option>
                     <option>mg</option>
                     <option>kg</option>
