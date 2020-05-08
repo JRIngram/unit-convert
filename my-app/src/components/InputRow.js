@@ -98,7 +98,7 @@ class InputRow extends React.Component{
 
                 <input type="text" value={this.state.toValue} readOnly/>
 
-                <select id="to" onChange={this.toUnitChange}>
+                <select id="to" onChange={() => {this.toUnitChange() }}>
                     <option>g</option>
                     <option>mg</option>
                     <option>kg</option>
