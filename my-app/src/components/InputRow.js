@@ -39,11 +39,11 @@ class InputRow extends React.Component{
             const fromUnit = this.state.fromUnit;
             if(fromUnit === 'g' || fromUnit === 'kg' || fromUnit === 'mg' || fromUnit === 'lb' || fromUnit === 'st'){
                 //Convert to mass if mass unit
-                this.setState({toUnit: 'g'}, this.convertUnit());
+                this.setState({toUnit: 'g'});
             }
             if(fromUnit === 'm3' || fromUnit === 'l' || fromUnit === 'ml' || fromUnit === 'pt (imp)' || fromUnit === 'cup (mt)'){
                 //Convert to volume if volume unit
-                this.setState({toUnit: 'l'}, this.convertUnit());
+                this.setState({toUnit: 'l'});
             }
         }
         console.log(`${this.state.fromValue} has been converted to ${this.state.fromValue}`)
@@ -84,7 +84,7 @@ class InputRow extends React.Component{
             <div>
                 <input type="text" value={this.state.fromValue} onChange={this.fromValueChange}/>
                 
-                <select value={this.state.fromUnit} id="from" onChange={this.fromUnitChange}>
+                <select id="from" value={this.state.fromUnit}  onChange={this.fromUnitChange}>
                     <option>g</option>
                     <option>mg</option>
                     <option>kg</option>
@@ -99,7 +99,7 @@ class InputRow extends React.Component{
 
                 <input type="text" value={this.state.toValue} readOnly/>
 
-                <select id="to" onChange={this.toUnitChange}>
+                <select id="to" value={this.state.toUnit} onChange={this.toUnitChange}>
                     <option>g</option>
                     <option>mg</option>
                     <option>kg</option>
