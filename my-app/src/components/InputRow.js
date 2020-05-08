@@ -1,5 +1,5 @@
 import React from 'react';
-import { convertMass, convertVolume } from 'ts-unit-convert';
+import { convertMass, convertVolume } from '../convertor/convertor';
 import DisplayUnit from '../components/DisplayUnit'
 
 /**

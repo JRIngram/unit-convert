@@ -1,0 +1,50 @@
+{
+    "mass": {
+        "g": {
+            "name": "gram",
+            "ratioWithAnchor": "* 1000"
+        },
+        "mg": {
+            "name": "miligram",
+            "ratioWithAnchor": "* 1000000"
+        },
+        "kg": {
+            "name": "kilogram",
+            "ratioWithAnchor": "* 1" 
+        },
+        "st": {
+            "name": "stone",
+            "ratioWithAnchor": "* 0.157473"
+        },
+        "lb": {
+            "name": "pound",
+            "ratioWithAnchor": "* 2.204623"
+        },
+        "oz": {
+            "name": "ounce",
+            "ratioWithAnchor": "* 35.27396"
+        }
+    },
+    "liquid": {
+        "m3": {
+            "name": "cubic metre",
+            "ratioWithAnchor": "* 1"
+        },
+        "l": {
+            "name": "litre",
+            "ratioWithAnchor": "* 1000"
+        },
+        "ml": {
+            "name": "mililitre",
+            "ratioWithAnchor": "* 1000000"
+        },
+        "pt (imp)": {
+            "name": "imperial pint",
+            "ratioWithAnchor": "* 1759.754"
+        },
+        "cup (mt)": {
+            "name": "metric cup",
+            "ratioWithAnchor" : "* 4000"
+        }
+    }
+}

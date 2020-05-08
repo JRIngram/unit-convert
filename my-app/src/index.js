@@ -4,34 +4,7 @@ import './index.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import InputRow from './components/InputRow';
-
-/**
- * Random timer element to understand states.
- */
-class Time extends React.Component{
-    constructor(props) {
-        super(props);    
-        this.state = {date: new Date()};
-    }
-
-    tick() {
-        this.setState({date: new Date()});
-    }
-
-    componentDidMount() {
-        this.timerID = setInterval(() => this.tick(),1000);
-    }
-    componentWillUnmount() { 
-        clearInterval(this.timerID);
-    }
-
-    render() {
-        return (
-            <p>The time is: {this.state.date.toLocaleTimeString()}</p>
-        );
-    }
-}
-
+import Timer from './components/Timer';
 class Input extends React.Component{
     constructor(props){
         super(props);
@@ -73,7 +46,7 @@ function App() {
     return (
         <div>
             <Header />
-            <Time />
+            <Timer />
             <Input rows={3}/>
             <Footer />
         </div>
