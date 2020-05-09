@@ -4,7 +4,7 @@ import './index.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import InputRow from './components/InputRow';
-import Timer from './components/Timer';
+import Chef from './components/Chef';
 class Input extends React.Component{
     constructor(props){
         super(props);
@@ -46,7 +46,7 @@ function App() {
     return (
         <div>
             <Header />
-            <Timer />
+            <Chef />
             <Input rows={3}/>
             <Footer />
         </div>
