@@ -44,12 +44,12 @@ class Input extends React.Component{
 
 function App() {
     return (
-        <div>
+        <>
             <Header />
             <Chef />
             <Input rows={3}/>
             <Footer />
-        </div>
+        </>
     );
 }
 

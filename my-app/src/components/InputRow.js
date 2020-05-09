@@ -1,6 +1,7 @@
 import React from 'react';
 import { convertMass, convertVolume } from '../convertor/convertor';
 import DisplayUnit from '../components/DisplayUnit'
+import UnitDropdown from './UnitDropdown';
 
 /**
  * Component which handles the input and conversion of inputs to units.
@@ -78,34 +79,12 @@ class InputRow extends React.Component{
         return (
             <div>
                 <input type="text" value={this.state.fromValue} onChange={this.fromValueChange}/>
-                <select id="from" value={this.state.fromUnit}  onChange={this.fromUnitChange}>
-                    <option>g</option>
-                    <option>mg</option>
-                    <option>kg</option>
-                    <option>lb</option>
-                    <option>st</option>
-                    <option>m3</option>
-                    <option>l</option>
-                    <option>ml</option>
-                    <option>pt (imp)</option>
-                    <option>cup (mt)</option>
-                </select>
+                <UnitDropdown unit={this.state.fromUnit} onChange={this.fromUnitChange} />
 
                 <img className="arrow" src="arrow.svg" alt="-->"/>
 
                 <DisplayUnit toValue={this.state.toValue} />
-                <select id="to" value={this.state.toUnit} onChange={this.toUnitChange}>
-                    <option>g</option>
-                    <option>mg</option>
-                    <option>kg</option>
-                    <option>lb</option>
-                    <option>st</option>
-                    <option>m3</option>
-                    <option>l</option>
-                    <option>ml</option>
-                    <option>pt (imp)</option>
-                    <option>cup (mt)</option>
-                </select>
+                <UnitDropdown unit={this.state.toUnit} onChange={this.toUnitChange}/>
             </div>
         );
     }
