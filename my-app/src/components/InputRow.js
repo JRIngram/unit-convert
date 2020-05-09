@@ -28,11 +28,11 @@ class InputRow extends React.Component{
             if(fromUnit === 'g' || fromUnit === 'kg' || fromUnit === 'mg' || fromUnit === 'lb' || fromUnit === 'st'){
                 //Convert to mass if mass unit
                 console.log(this.state.fromValue, this.state.fromUnit, this.state.toUnit);
-                convertedValue = convertMass(this.state.fromValue, this.state.fromUnit, this.state.toUnit);
+                convertedValue = Math.round(convertMass(this.state.fromValue, this.state.fromUnit, this.state.toUnit));
             }
             if(fromUnit === 'm3' || fromUnit === 'l' || fromUnit === 'ml' || fromUnit === 'pt (imp)' || fromUnit === 'cup (mt)'){
                 //Convert to volume if volume unit
-                convertedValue = convertVolume(this.state.fromValue, this.state.fromUnit, this.state.toUnit);
+                convertedValue = Math.round(convertVolume(this.state.fromValue, this.state.fromUnit, this.state.toUnit));
             }
         }catch(Error){
             // If using incompatible units: convert to same type of unit
