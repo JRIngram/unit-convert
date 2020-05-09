@@ -12,31 +12,20 @@ export default class Timer extends React.Component{
                         .split(':')[2];
         if(milisecond < 15){
             return (
-                <img width={200} height={200} src={'/chefs/ainsley.jpeg'}/>
+                <img width={200} height={200} src={'/chefs/ainsley.jpeg'} alt="ainsley"/>
             )
         }
         else if(milisecond >= 15 && milisecond < 30){
             return (
-                <img width={200} height={200} src={'/chefs/gordon.jpeg'}/>
+                <img width={200} height={200} src={'/chefs/gordon.jpeg'} alt="gordan"/>
             )
         }
         else if(milisecond >= 30 && milisecond < 45){
-            if(milisecond % 2 === 0){
-                return (
-                    <>
-                        <h3>YAAAS QUEEN</h3>
-                        <img width={200} height={200} src={'/chefs/nigella.jpeg'}/>
-                    </>
-                );
-            }
-            else{
-                return <img width={200} height={200} src={'/chefs/nigella.jpeg'}/>
-            }
-
+            return <img width={200} height={200} src={'/chefs/nigella.jpeg'} alt="nigella"/>
         }
         else{
             return (
-                <img width={200} height={200} src={'/chefs/berry.jpeg'}/>
+                <img width={200} height={200} src={'/chefs/berry.jpeg'} alt="berry"/>
             )
         }
     }
@@ -55,11 +44,9 @@ export default class Timer extends React.Component{
     render() {
         return (
             <div>
-
-                { this.displayChef() }
+                {this.displayChef()}
                 <p>The time is: {this.state.date.toLocaleTimeString()}</p>
             </div>
-
         );
     }
 }
